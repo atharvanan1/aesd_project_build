@@ -19,6 +19,3 @@
 [submodule "layers/meta-st/scripts"]
 	path = layers/meta-st/scripts
 	url = https://github.com/STMicroelectronics/meta-st-scripts.git
-[submodule "layers/openembedded-core"]
-	path = layers/openembedded-core
-	url = git@github.com:atharvanan1/openembedded-core.git
