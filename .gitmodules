@@ -9,10 +9,7 @@
 	url = https://github.com/openembedded/meta-openembedded.git
 [submodule "layers/openembedded-core"]
 	path = layers/openembedded-core
-	url = https://git.openembedded.org/openembedded-core/
-[submodule "layers/openembedded-core/bitbake"]
-	path = layers/openembedded-core/bitbake
-	url = https://git.openembedded.org/bitbake/
+	url = https://github.com/atharvanan1/openembedded-core.git
 [submodule "layers/meta-st/meta-st-openstlinux"]
 	path = layers/meta-st/meta-st-openstlinux
 	url = https://github.com/STMicroelectronics/meta-st-openstlinux.git
