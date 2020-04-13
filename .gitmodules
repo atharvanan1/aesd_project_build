@@ -22,3 +22,14 @@
 [submodule "layers/openembedded-core"]
 	path = layers/openembedded-core
 	url = git@github.com:atharvanan1/openembedded-core.git
+[submodule "layers/meta-iotedge"]
+	path = layers/meta-iotedge
+	url = https://github.com/Azure/meta-iotedge.git
+	branch = thud
+[submodule "layers/meta-rust"]
+	path = layers/meta-rust
+	url = https://github.com/meta-rust/meta-rust.git
+[submodule "layers/meta-virtualization"]
+	path = layers/meta-virtualization
+	url = git://git.yoctoproject.org/meta-virtualization
+	branch = thud
