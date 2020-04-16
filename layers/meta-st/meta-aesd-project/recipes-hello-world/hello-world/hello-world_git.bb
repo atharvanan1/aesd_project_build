@@ -11,7 +11,7 @@ SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "${AUTOREV}"
+SRCREV = "ad3f45688d1714438460c7a72ffff302e1bf1b0f"
 
 S = "${WORKDIR}/git"
 
