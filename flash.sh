@@ -9,7 +9,7 @@
 curr_dir=`dirname $0`
 build_dir="build-openstlinuxweston-stm32mp1"
 image_dir="tmp-glibc/deploy/images/stm32mp1"
-flash_parent_dir="flashlayout_st-image-weston"
+flash_parent_dir="flashlayout_st-image-aesd"
 flash_layout_file="FlashLayout_sdcard_stm32mp157a-dk1-trusted.tsv"
 stm_flasher="${curr_dir}/STM32CubeProgrammer-2.4.0/bin/STM32_Programmer_CLI"
 

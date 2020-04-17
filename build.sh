@@ -19,4 +19,4 @@ bitbake-layers add-layer ../layers/meta-rust
 bitbake-layers add-layer ../layers/meta-iotedge
 
 set -e
-bitbake st-image-weston
+bitbake st-image-aesd
