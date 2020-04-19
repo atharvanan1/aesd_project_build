@@ -20,7 +20,6 @@ DEPENDS_append += " \
 	"
 
 RDEPENDS_${PN} += " \
-	azure-iot-sdk-c \
 	iotedge-cli \
 	iotedge-daemon \
 	"

@@ -34,3 +34,6 @@
 	path = layers/meta-virtualization
 	url = git://git.yoctoproject.org/meta-virtualization
 	branch = thud
+[submodule "layers/meta-iot-cloud"]
+	path = layers/meta-iot-cloud
+	url = https://github.com/intel-iot-devkit/meta-iot-cloud.git
