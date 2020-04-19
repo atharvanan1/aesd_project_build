@@ -26,7 +26,7 @@ do_configure () {
 
 do_compile () {
 	# Specify compilation commands here
-	oe_runmake hello-world
+	oe_runmake hello_world
 }
 
 do_install () {

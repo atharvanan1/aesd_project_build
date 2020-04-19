@@ -37,4 +37,3 @@
 [submodule "layers/meta-iot-cloud"]
 	path = layers/meta-iot-cloud
 	url = https://github.com/intel-iot-devkit/meta-iot-cloud
-	branch = warrior
