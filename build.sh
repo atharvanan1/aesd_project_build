@@ -14,7 +14,7 @@ else
     echo "DISTRO_FEATURES_append=\" virtualization\"" >> ./conf/local.conf
 fi
 
-# sed -i 's/LAYERSERIES_COMPAT_iot-cloud = "zeus dunfell"/LAYERSERIES_COMPAT_iot-cloud = "zeus dunfell thud"/g' ../layers/meta-iot-cloud/conf/layer.conf
+sed -i 's/LAYERSERIES_COMPAT_iot-cloud = "warrior"/LAYERSERIES_COMPAT_iot-cloud = "warrior thud"/g' ../layers/meta-iot-cloud/conf/layer.conf
 
 bitbake-layers add-layer ../layers/meta-st/meta-aesd-project
 bitbake-layers add-layer ../layers/meta-openembedded/meta-oe
