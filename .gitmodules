@@ -21,7 +21,7 @@
 	url = https://github.com/STMicroelectronics/meta-st-scripts.git
 [submodule "layers/openembedded-core"]
 	path = layers/openembedded-core
-	url = git@github.com:atharvanan1/openembedded-core.git
+	url = https://github.com/atharvanan1/openembedded-core.git
 [submodule "layers/meta-iotedge"]
 	path = layers/meta-iotedge
 	url = https://github.com/Azure/meta-iotedge.git
