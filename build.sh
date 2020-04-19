@@ -22,6 +22,7 @@ bitbake-layers add-layer ../layers/meta-openembedded/meta-filesystems
 bitbake-layers add-layer ../layers/meta-virtualization
 bitbake-layers add-layer ../layers/meta-rust
 bitbake-layers add-layer ../layers/meta-iotedge
+bitbake-layers add-layer ../layers/meta-iot-cloud
 
 set -e
 bitbake st-image-aesd

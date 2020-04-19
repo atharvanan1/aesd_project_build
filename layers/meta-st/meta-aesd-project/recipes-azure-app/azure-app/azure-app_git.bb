@@ -11,13 +11,21 @@ SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "ad3f45688d1714438460c7a72ffff302e1bf1b0f"
+SRCREV = "c2016b552272604b561789bbe0577d9ce36d02ad"
 
 S = "${WORKDIR}/git"
 
-FILES_PN += "\
-			${bindir_native}/hello_world \
-			"
+DEPENDS_append += " \
+	azure-iot-sdk-c \
+	"
+
+RDEPENDS_${PN} += " \
+	azure-iot-sdk-c \
+	iotedge-cli \
+	iotedge-daemon \
+	"
+
+# NOTE: no Makefile found, unable to determine what needs to be done
 
 do_configure () {
 	# Specify any needed configure commands here
@@ -26,12 +34,12 @@ do_configure () {
 
 do_compile () {
 	# Specify compilation commands here
-	oe_runmake hello-world
+	oe_runmake azure -I"${WORKDIR}/recipe-sysroot/usr/include/azureiot"
 }
 
 do_install () {
 	# Specify install commands here
 	install -d ${D}${bindir_native}
-	install -m 0755 ${S}/hello_world ${D}${bindir_native}
+	install -m 0755 ${S}/azure/azure_app ${D}${bindir_native}
 }
 
