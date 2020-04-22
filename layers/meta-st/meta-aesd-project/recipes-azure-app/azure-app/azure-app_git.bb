@@ -7,13 +7,14 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=96acd7c558849eaf93c9c522f1a2f334"
 
-SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
+SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;branch=master \
+		   "
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "c2016b552272604b561789bbe0577d9ce36d02ad"
+SRCREV = "dddd8a1465afe66e61f43345ec182bccd36dabf4"
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}"
 
 DEPENDS_append += " \
 	azure-iot-sdk-c \
@@ -24,16 +25,10 @@ RDEPENDS_${PN} += " \
 	iotedge-daemon \
 	"
 
-# NOTE: no Makefile found, unable to determine what needs to be done
+inherit cmake
 
-do_configure () {
-	# Specify any needed configure commands here
-	:
-}
-
-do_compile () {
-	# Specify compilation commands here
-	oe_runmake azure -I"${WORKDIR}/recipe-sysroot/usr/include/azureiot"
+do_configue () {
+	cmake ..
 }
 
 do_install () {
