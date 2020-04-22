@@ -19,9 +19,10 @@ S = "${WORKDIR}/git/iot_sensor_gui"
 
 do_install_append() {
   install -d ${D}${bindir_native}
+  install -m 0755 iot_sensor_gui ${D}${bindir_native}
 }
 
-FILES_${PN} += " ${D}${bindir_native}"
+FILES_${PN} += " ${bindir_native}/iot_sensor_gui"
 
 inherit qmake5
 
