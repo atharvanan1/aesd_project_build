@@ -7,33 +7,22 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=96acd7c558849eaf93c9c522f1a2f334"
 
-SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;branch=master \
-		   "
+SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "630ee1317911891f3d461d3aaf84324313803006"
+SRCREV = "189745cf51de40cbb91c16c4a5baa740a589dcbd"
 
-S = "${WORKDIR}"
+DEPENDS += "qtbase qtquickcontrols2"
 
-DEPENDS_append += " \
-	azure-iot-sdk-c \
-	"
+S = "${WORKDIR}/git/iot_sensor_gui"
 
-RDEPENDS_${PN} += " \
-	iotedge-cli \
-	iotedge-daemon \
-	"
-
-inherit cmake
-
-do_configue () {
-	cmake ..
+do_install_append() {
+  install -d ${D}${bindir_native}
+  install -m 0755 iot_sensor_gui ${D}${bindir_native}
 }
 
-do_install () {
-	# Specify install commands here
-	install -d ${D}${bindir_native}
-	install -m 0755 ${S}/azure/azure_app ${D}${bindir_native}
-}
+FILES_${PN} += " ${bindir_native}/iot_sensor_gui"
+
+inherit qmake5
 
