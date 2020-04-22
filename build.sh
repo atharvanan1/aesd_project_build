@@ -24,6 +24,7 @@ bitbake-layers add-layer ../layers/meta-virtualization
 bitbake-layers add-layer ../layers/meta-rust
 bitbake-layers add-layer ../layers/meta-iotedge
 bitbake-layers add-layer ../layers/meta-iot-cloud
+bitbake-layers add-layer ../layers/meta-qt5
 
 set -e
 bitbake st-image-aesd
