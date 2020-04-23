@@ -12,9 +12,9 @@ SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;bran
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "630ee1317911891f3d461d3aaf84324313803006"
+SRCREV = "eb9f7e087da3c60c90b5fc911476c13f54ccbf1f"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/git/azure"
 
 DEPENDS_append += " \
 	azure-iot-sdk-c \
