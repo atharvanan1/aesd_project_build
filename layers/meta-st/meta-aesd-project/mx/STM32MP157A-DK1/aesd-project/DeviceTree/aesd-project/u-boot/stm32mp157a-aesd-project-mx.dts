@@ -169,6 +169,20 @@
 &pinctrl {
 	u-boot,dm-pre-reloc;
 
+	adc_pins_mx: adc_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 4, ANALOG)>, /* ADC1_INP18 */
+					 <STM32_PINMUX('A', 5, ANALOG)>; /* ADC1_INP19 */
+		};
+	};
+
+	adc_sleep_pins_mx: adc_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 4, ANALOG)>, /* ADC1_INP18 */
+					 <STM32_PINMUX('A', 5, ANALOG)>; /* ADC1_INP19 */
+		};
+	};
+
 	eth1_pins_mx: eth1_mx-0 {
 		pins1 {
 			pinmux = <STM32_PINMUX('A', 1, AF11)>, /* ETH1_RX_CLK */
@@ -249,6 +263,23 @@
 		pins {
 			pinmux = <STM32_PINMUX('D', 12, ANALOG)>, /* I2C1_SCL */
 					 <STM32_PINMUX('F', 15, ANALOG)>; /* I2C1_SDA */
+		};
+	};
+
+	i2c5_pins_mx: i2c5_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, AF4)>; /* I2C5_SDA */
+			bias-disable;
+			drive-open-drain;
+			slew-rate = <0>;
+		};
+	};
+
+	i2c5_sleep_pins_mx: i2c5_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C5_SDA */
 		};
 	};
 
@@ -337,13 +368,6 @@
 					 <STM32_PINMUX('I', 4, ANALOG)>, /* LTDC_B4 */
 					 <STM32_PINMUX('I', 9, ANALOG)>, /* LTDC_VSYNC */
 					 <STM32_PINMUX('I', 10, ANALOG)>; /* LTDC_HSYNC */
-		};
-	};
-
-	m4_adc_pins_mx: m4_adc_mx-0 {
-		pins {
-			pinmux = <STM32_PINMUX('A', 4, ANALOG)>, /* ADC1_INP18 */
-					 <STM32_PINMUX('A', 5, ANALOG)>; /* ADC1_INP19 */
 		};
 	};
 
@@ -516,13 +540,42 @@
 	interrupt-names = "wdg";
 	wakeup-source;
 	/* USER CODE END m4_rproc */
+};
 
-	m4_system_resources{
+&adc{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&adc_pins_mx>;
+	pinctrl-1 = <&adc_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN adc */
+	vdd-supply = <&vdd>;
+	vdda-supply = <&vdd>;
+	vref-supply = <&vrefbuf>;
+	adc1: adc@0 {
+		/*
+		 * Type-C USB_PWR_CC1 & USB_PWR_CC2 on in18 & in19.
+		 * Use at least 5 * RC time, e.g. 5 * (Rp + Rd) * C:
+		 * 5 * (56 + 47kOhms) * 5pF => 2.5us.
+		 * Use arbitrary margin here (e.g. 5µs).
+		 */
+		st,min-sample-time-nsecs = <5000>;
+		/* ANA0, ANA1, USB Type-C CC1 & CC2 */
+		st,adc-channels = <0 1 6 13 18 19>;
 		status = "okay";
-
-		/* USER CODE BEGIN m4_system_resources */
-		/* USER CODE END m4_system_resources */
 	};
+	adc2: adc@100 {
+		/* ANA0, ANA1, temp sensor, USB Type-C CC1 & CC2 */
+		st,adc-channels = <0 1 2 6 12 18 19>;
+		/* temperature sensor min sample time */
+		st,min-sample-time-nsecs = <10000>;
+		status = "okay";
+	};
+	
+	adc_temp: temp {
+		status = "okay";
+	};
+	/* USER CODE END adc */
 };
 
 &bsec{
@@ -841,6 +894,16 @@
 	/* USER CODE END i2c4 */
 };
 
+&i2c5{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&i2c5_pins_mx>;
+	pinctrl-1 = <&i2c5_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN i2c5 */
+	/* USER CODE END i2c5 */
+};
+
 &i2s2{
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&i2s2_pins_mx>;
@@ -893,15 +956,6 @@
 		};
 	};
 	/* USER CODE END ltdc */
-};
-
-&m4_adc{
-	pinctrl-names = "default";
-	pinctrl-0 = <&m4_adc_pins_mx>;
-	status = "okay";
-
-	/* USER CODE BEGIN m4_adc */
-	/* USER CODE END m4_adc */
 };
 
 &pwr{

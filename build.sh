@@ -14,14 +14,77 @@ else
     echo "DISTRO_FEATURES_append=\" virtualization\"" >> ./conf/local.conf
 fi
 
-bitbake-layers add-layer ../layers/meta-st/meta-aesd-project
-bitbake-layers add-layer ../layers/meta-openembedded/meta-oe
-bitbake-layers add-layer ../layers/meta-openembedded/meta-python
-bitbake-layers add-layer ../layers/meta-openembedded/meta-filesystems
-bitbake-layers add-layer ../layers/meta-virtualization
-bitbake-layers add-layer ../layers/meta-rust
-bitbake-layers add-layer ../layers/meta-iotedge
-bitbake-layers add-layer ../layers/meta-qt5
+bitbake-layers show-layers | grep "meta-aesd-project" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-aesd-project layer"
+	bitbake-layers add-layer ../layers/meta-st/meta-aesd-project
+else
+	echo "meta-aesd-project layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-oe" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-oe layer"
+	bitbake-layers add-layer ../layers/meta-openembedded/meta-oe
+else
+	echo "meta-oe layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-python" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-python layer"
+	bitbake-layers add-layer ../layers/meta-openembedded/meta-python
+else
+	echo "meta-python layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-filesystems" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-filesystems layer"
+	bitbake-layers add-layer ../layers/meta-openembedded/meta-filesystems
+else
+	echo "meta-filesystems layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-virtualization" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-virtualization layer"
+	bitbake-layers add-layer ../layers/meta-virtualization
+else
+	echo "meta-virtualization layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-rust" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-rust layer"
+	bitbake-layers add-layer ../layers/meta-rust
+else
+	echo "meta-rust layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-iotedge" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-iotedge layer"
+	bitbake-layers add-layer ../layers/meta-iotedge
+else
+	echo "meta-iotedge layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-qt5" > /dev/null
+layer_info=$?
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-qt5 layer"
+	bitbake-layers add-layer ../layers/meta-qt5
+else
+	echo "meta-qt5 layer already exists"
+fi
 
 set -e
 bitbake st-image-aesd

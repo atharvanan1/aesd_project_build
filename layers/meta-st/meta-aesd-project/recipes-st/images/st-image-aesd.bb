@@ -45,5 +45,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 
 CORE_IMAGE_EXTRA_INSTALL += " \
     hello-world \
-    azure-app \
+    tmp102 \
+    qt-app \
     "
+
