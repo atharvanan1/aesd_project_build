@@ -21,7 +21,7 @@ PACKAGECONFIG[service_client] = "-Dbuild_service_client:BOOL=ON, -Dbuild_service
 EXTRA_OECMAKE = "\
     -Dbuild_as_dynamic:BOOL=ON \
     -Dskip_samples:BOOL=ON \
-    -Duse_installed_dependencies:BOOL=ON \
+    -Duse_installed_dependencies:BOOL=OFF \
 "
 
 sysroot_stage_all_append () {
