@@ -25,9 +25,19 @@ EXTRA_OECMAKE = "\
     -Drun_unittests:BOOL=OFF \
 "
 
+# See solution at https://stackoverflow.com/a/59029698/1446624
+do_configure_prepend() {
+	cd ${S}
+	git submodule update --init --recursive
+}
+
 sysroot_stage_all_append () {
     sysroot_stage_dir ${D}${exec_prefix}/cmake ${SYSROOT_DESTDIR}${exec_prefix}/cmake
 }
+
+RDEPENDS_${PN} += "\
+	azure-uamqp-c \
+"
 
 FILES_${PN}-dev += "\
     ${exec_prefix}/cmake \

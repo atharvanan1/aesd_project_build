@@ -1,0 +1,28 @@
+From ed6624ccf6fc795bfeef61e0461ce6864cfb5fc0 Mon Sep 17 00:00:00 2001
+From: Dan Walkes <danwalkes@trellis-logic.com>
+Date: Wed, 22 Apr 2020 21:57:03 -0600
+Subject: [PATCH] Fix target link libraries for serializer
+
+Resolves issue with
+```
+/usr/lib/libserializer.so.1.2.10
+contained in package azure-iot-sdk-c requires
+libaziotsharedutil_dll.so, but no providers found in RDEPENDS_azure-iot-sdk-c
+```
+---
+ serializer/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/serializer/CMakeLists.txt b/serializer/CMakeLists.txt
+index 1c696ab6f..9488286e4 100644
+--- a/serializer/CMakeLists.txt
++++ b/serializer/CMakeLists.txt
+@@ -78,7 +78,7 @@ if (${build_as_dynamic})
+         serializer_dll SHARED ${serializer_c_files} ${serializer_h_files} ./src/serializer.def
+     )
+     target_link_libraries(serializer_dll
+-        aziotsharedutil_dll
++		aziotsharedutil
+     )
+
+     set_target_properties(serializer_dll PROPERTIES
