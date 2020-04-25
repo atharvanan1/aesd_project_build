@@ -1,0 +1,25 @@
+From 5f56389ad1a3dba688d6a7242de830c69f30e06a Mon Sep 17 00:00:00 2001
+From: bcis93 <bryancisneros93@gmail.com>
+Date: Sat, 25 Apr 2020 03:19:45 +0000
+Subject: [PATCH] get prov sdk version
+
+---
+ provisioning_client/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/provisioning_client/CMakeLists.txt b/provisioning_client/CMakeLists.txt
+index 52ed3785d..411dfb880 100644
+--- a/provisioning_client/CMakeLists.txt
++++ b/provisioning_client/CMakeLists.txt
+@@ -19,6 +19,11 @@ macro(compileAsC99)
+     endif()
+ endmacro(compileAsC99)
+ 
++if (${use_prov_client_core})
++    getProvSDKVersion()
++    message(STATUS "Provisioning SDK Version = ${PROV_SDK_VERSION}")
++endif()
++
+ 
+ compileAsC99()
+ 

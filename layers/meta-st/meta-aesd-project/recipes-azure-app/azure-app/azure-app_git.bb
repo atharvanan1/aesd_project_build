@@ -17,8 +17,9 @@ SRCREV = "eb9f7e087da3c60c90b5fc911476c13f54ccbf1f"
 S = "${WORKDIR}/git/azure"
 
 DEPENDS_append += " \
+	azure-c-shared-utility \
 	azure-iot-sdk-c \
-	"
+"
 
 RDEPENDS_${PN} += " \
 	iotedge-cli \

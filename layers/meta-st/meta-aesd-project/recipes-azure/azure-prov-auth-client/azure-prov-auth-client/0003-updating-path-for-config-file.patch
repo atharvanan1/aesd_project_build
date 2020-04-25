@@ -1,0 +1,22 @@
+From 4419dc4387cdacd44056fa8d7803e78cb12809c4 Mon Sep 17 00:00:00 2001
+From: bcis93 <bryancisneros93@gmail.com>
+Date: Sat, 25 Apr 2020 03:42:16 +0000
+Subject: [PATCH] updating path for config file
+
+---
+ provisioning_client/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/provisioning_client/CMakeLists.txt b/provisioning_client/CMakeLists.txt
+index 411dfb880..deeba121e 100644
+--- a/provisioning_client/CMakeLists.txt
++++ b/provisioning_client/CMakeLists.txt
+@@ -387,7 +387,7 @@ if(${use_installed_dependencies})
+         COMPATIBILITY SameMajorVersion
+     )
+ 
+-    configure_file("configs/${PROJECT_NAME}Config.cmake"
++    configure_file("../configs/azure_iot_sdksConfig.cmake"
+         "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
+         COPYONLY
+     )

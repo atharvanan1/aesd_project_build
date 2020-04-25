@@ -1,0 +1,22 @@
+From 9a53cd5e22777f2170c268b00e81b35b62cb69d8 Mon Sep 17 00:00:00 2001
+From: bcis93 <bryancisneros93@gmail.com>
+Date: Sat, 25 Apr 2020 03:08:18 +0000
+Subject: [PATCH] include azure_iot_sdksFunctions cmake file
+
+---
+ provisioning_client/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/provisioning_client/CMakeLists.txt b/provisioning_client/CMakeLists.txt
+index 350d00d78..52ed3785d 100644
+--- a/provisioning_client/CMakeLists.txt
++++ b/provisioning_client/CMakeLists.txt
+@@ -3,6 +3,8 @@
+ 
+ cmake_minimum_required(VERSION 2.8.11)
+ 
++include("../configs/azure_iot_sdksFunctions.cmake")
++
+ macro(compileAsC99)
+     if (CMAKE_VERSION VERSION_LESS "3.1")
+         if (CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
