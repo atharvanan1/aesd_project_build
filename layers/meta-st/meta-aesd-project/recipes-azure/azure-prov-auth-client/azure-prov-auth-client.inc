@@ -11,7 +11,6 @@ EXTRA_OECMAKE = "\
     -Dbuild_as_dynamic:BOOL=ON \
     -Dskip_samples:BOOL=ON \
     -Duse_installed_dependencies:BOOL=ON \
-# NOTE: Added this based on looking at the CMakeLists.txt file - do refer to it if it doesn't build
     -Duse_prov_client=BOOL=ON \
 "
 
