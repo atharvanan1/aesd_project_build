@@ -4,17 +4,14 @@ DEPENDS = "\
     azure-c-shared-utility \
 "
 
-S = "${WORKDIR}/git/provisioning_client"
+S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-EXTRA_OECMAKE = "\
-    -Dbuild_as_dynamic:BOOL=ON \
+EXTRA_OECMAKE += "\
     -Dskip_samples:BOOL=ON \
     -Duse_installed_dependencies:BOOL=ON \
-    -Duse_prov_client=BOOL=ON \
 "
 
-# I think the source directories will need some work, so try to tweak it a bit.
 sysroot_stage_all_append () {
     sysroot_stage_dir ${D}${exec_prefix}/cmake ${SYSROOT_DESTDIR}${exec_prefix}/cmake
 }

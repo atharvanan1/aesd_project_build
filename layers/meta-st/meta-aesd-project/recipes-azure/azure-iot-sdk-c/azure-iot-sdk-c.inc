@@ -2,27 +2,38 @@ inherit cmake
 
 DEPENDS = "\
     azure-c-shared-utility \
+    parson \
+    azure-uhttp-c \
+    azure-uamqp-c \
 "
 
 SRC_URI += "\
-    file://Compile-parson-into-main-libs.patch \
     file://Fix-cmake-build-issues.patch \
-    file://Fix-missing-installed-libs.patch \
+    file://Use-provided-parson-lib.patch \
 "
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-PACKAGECONFIG ??= "amqp mqtt service_client"
+PACKAGECONFIG ??= "amqp mqtt"
 PACKAGECONFIG[amqp] = "-Duse_amqp:BOOL=ON, -Duse_amqp:BOOL=OFF, azure-uamqp-c"
 PACKAGECONFIG[mqtt] = "-Duse_mqtt:BOOL=ON, -Duse_mqtt:BOOL=OFF, azure-umqtt-c"
-PACKAGECONFIG[service_client] = "-Dbuild_service_client:BOOL=ON, -Dbuild_service_client:BOOL=OFF"
 
 EXTRA_OECMAKE = "\
     -Dbuild_as_dynamic:BOOL=ON \
     -Dskip_samples:BOOL=ON \
     -Duse_installed_dependencies:BOOL=ON \
+    -Dbuild_service_client:BOOL=OFF \
+    -Dbuild_provisioning_service_client:BOOL=OFF \
+    -Duse_edge_modules:BOOL=ON \
+    -Duse_amqp:BOOL=ON:BOOL=ON \
 "
+
+# See solution at https://stackoverflow.com/a/59029698/1446624
+do_configure_prepend() {
+	cd ${S}
+	git submodule update --init --recursive
+}
 
 sysroot_stage_all_append () {
     sysroot_stage_dir ${D}${exec_prefix}/cmake ${SYSROOT_DESTDIR}${exec_prefix}/cmake
