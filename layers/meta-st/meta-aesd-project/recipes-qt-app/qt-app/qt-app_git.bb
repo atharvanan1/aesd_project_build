@@ -7,11 +7,11 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=96acd7c558849eaf93c9c522f1a2f334"
 
-SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
+SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "189745cf51de40cbb91c16c4a5baa740a589dcbd"
+SRCREV = "bb259566582f973b6ffb60f6ac76a25690d7461e"
 
 DEPENDS += "qtbase qtquickcontrols2"
 

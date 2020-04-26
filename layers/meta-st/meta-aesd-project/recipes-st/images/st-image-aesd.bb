@@ -45,7 +45,6 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 
 CORE_IMAGE_EXTRA_INSTALL += " \
     hello-world \
-    tmp102 \
     qt-app \
     "
 
