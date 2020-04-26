@@ -7,12 +7,12 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=96acd7c558849eaf93c9c522f1a2f334"
 
-SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;branch=new-library \
+SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh \
 		   "
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "c5e9ed006760bb5d3a331e38431177d757e6936b"
+SRCREV = "15e534a6b830fcae8446811959d4acb22ca4fa3b"
 
 S = "${WORKDIR}/git/azure"
 B = "${WORKDIR}/build"
