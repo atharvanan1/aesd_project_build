@@ -15,6 +15,8 @@ SRCREV = "189745cf51de40cbb91c16c4a5baa740a589dcbd"
 
 DEPENDS += "qtbase qtquickcontrols2"
 
+RDEPENDS_${PN} += "qtwayland-plugins"
+
 S = "${WORKDIR}/git/iot_sensor_gui"
 
 do_install_append() {
