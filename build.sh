@@ -14,6 +14,13 @@ else
     echo "DISTRO_FEATURES_append=\" virtualization\"" >> ./conf/local.conf
 fi
 
+if grep -q "PACKAGECONFIG_pn-azure-iot-sdk-c_append" ./conf/local.conf; then
+    echo -n ""
+else
+    echo "PACKAGECONFIG_pn-azure-iot-sdk-c_append = \"amqp mqtt uhttp edge\"" >> ./conf/local.conf
+fi
+
+
 bitbake-layers show-layers | grep "meta-aesd-project" > /dev/null
 layer_info=$?
 if [ $layer_info -ne 0 ];then

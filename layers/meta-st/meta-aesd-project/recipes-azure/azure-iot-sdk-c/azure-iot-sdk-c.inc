@@ -3,8 +3,6 @@ inherit cmake
 DEPENDS = "\
     azure-c-shared-utility \
     parson \
-    azure-uhttp-c \
-    azure-uamqp-c \
 "
 
 SRC_URI += "\
@@ -15,9 +13,11 @@ SRC_URI += "\
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-PACKAGECONFIG ??= "amqp mqtt"
+PACKAGECONFIG ??= "amqp mqtt uhttp edge"
 PACKAGECONFIG[amqp] = "-Duse_amqp:BOOL=ON, -Duse_amqp:BOOL=OFF, azure-uamqp-c"
 PACKAGECONFIG[mqtt] = "-Duse_mqtt:BOOL=ON, -Duse_mqtt:BOOL=OFF, azure-umqtt-c"
+PACKAGECONFIG[uhttp] = "-Duse_http:BOOL=ON, -Duse_http:BOOL=OFF, azure-uhttp-c"
+PACKAGECONFIG[edge] = "-Duse_edge_modules:BOOL=ON, -Duse_edge_modules:BOOL=OFF"
 
 EXTRA_OECMAKE = "\
     -Dbuild_as_dynamic:BOOL=ON \
@@ -25,8 +25,6 @@ EXTRA_OECMAKE = "\
     -Duse_installed_dependencies:BOOL=ON \
     -Dbuild_service_client:BOOL=OFF \
     -Dbuild_provisioning_service_client:BOOL=OFF \
-    -Duse_edge_modules:BOOL=ON \
-    -Duse_amqp:BOOL=ON:BOOL=ON \
 "
 
 # See solution at https://stackoverflow.com/a/59029698/1446624
