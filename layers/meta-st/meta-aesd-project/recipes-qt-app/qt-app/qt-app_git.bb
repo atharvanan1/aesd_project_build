@@ -11,7 +11,7 @@ SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "bb259566582f973b6ffb60f6ac76a25690d7461e"
+SRCREV = "7390ec212047c698a82750bda46611542417a4ed"
 
 DEPENDS += "qtbase qtquickcontrols2"
 

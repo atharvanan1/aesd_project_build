@@ -12,11 +12,9 @@ IMAGE_LINGUAS = "en-us"
 
 IMAGE_FEATURES += "\
     splash              \
-    package-management  \
     ssh-server-dropbear \
     hwcodecs            \
     tools-profile       \
-    eclipse-debug       \
     "
 
 #
@@ -36,7 +34,6 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     \
     ${@bb.utils.contains('COMBINED_FEATURES', 'tpm2', 'packagegroup-security-tpm2', '', d)} \
     \
-    packagegroup-st-demo \
     "
 
 # NOTE:
