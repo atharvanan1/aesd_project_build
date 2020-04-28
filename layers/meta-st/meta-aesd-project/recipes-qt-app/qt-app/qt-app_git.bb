@@ -15,6 +15,8 @@ SRCREV = "13ac30765aeeda60df03d66a59675ed761a8c1a4"
 
 DEPENDS += "qtbase qtquickcontrols2"
 
+RDEPENDS_${PN} += "qtwayland-plugins"
+
 S = "${WORKDIR}/git/iot_sensor_gui"
 
 inherit cmake
