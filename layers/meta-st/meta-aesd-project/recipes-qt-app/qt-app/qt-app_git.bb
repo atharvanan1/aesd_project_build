@@ -11,7 +11,7 @@ SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "0e209bd31cd6b7b483264c35ac10642b6d30390a"
+SRCREV = "65ea96f0f7bb7003d68aa9a2407b6827fcf69340"
 
 DEPENDS_append += " \
   qtbase \
@@ -29,6 +29,10 @@ RDEPENDS_${PN} += " \
 S = "${WORKDIR}/git/iot_sensor_gui"
 B = "${WORKDIR}/build"
 
+FILES_${PN} += " \
+  ${bindir_native}/iot_sensor_gui \
+  "
+
 inherit cmake_qt5
 
 do_install() {
@@ -36,6 +40,5 @@ do_install() {
   install -m 0755 ${B}/iot_sensor_gui ${D}${bindir_native}
 }
 
-FILES_${PN} += " ${bindir_native}/iot_sensor_gui"
 
 
