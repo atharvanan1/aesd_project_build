@@ -7,11 +7,11 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=96acd7c558849eaf93c9c522f1a2f334"
 
-SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh;branch=integrate-azure-into-gui"
+SRC_URI = "git://git@github.com/atharvanan1/aesd_linux_app.git;protocol=ssh"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "2953e8550d43757d46786c22304b8a7063235a0e"
+SRCREV = "d3a024284230e3f4a9432aaba831e124a50ad194"
 
 DEPENDS_append += " \
   qtbase \
